@@ -23,6 +23,12 @@ export default function HeroSection() {
       heroElements.forEach((el) => observer.observe(el));
     }
 
+    // Add animation classes immediately on page load
+    const animateElements = document.querySelectorAll(".animate-on-load");
+    animateElements.forEach((el) => {
+      el.classList.add("animated");
+    });
+
     return () => {
       if (heroElements) {
         heroElements.forEach((el) => observer.unobserve(el));
@@ -44,16 +50,16 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/5 to-background"></div>
       <div className="container relative z-10 px-4 sm:px-6 lg:px-8 mx-auto text-center">
-        <h1 className="animate-on-scroll text-4xl md:text-6xl font-bold mb-6 tracking-tight flex flex-col gap-2">
-          <span>Welcome to</span>
-          <span className="text-primary">Silver Oak University</span>
-          <span className="text-primary">IEEE Student Branch</span>
+        <h1 className="animate-on-load opacity-0 animate-fade-in text-4xl md:text-6xl font-bold mb-6 tracking-tight flex flex-col gap-2">
+          <span className="animation-delay-100">Welcome to</span>
+          <span className="text-primary animation-delay-300">Silver Oak University</span>
+          <span className="text-primary animation-delay-500">IEEE Student Branch</span>
         </h1>
-        <div className="animate-on-scroll flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <Button size="lg" asChild>
+        <div className="animate-on-load opacity-0 animate-fade-in animation-delay-700 flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Button size="lg" asChild className="animate-scale-in">
             <a href="#why-join-section">Discover More</a>
           </Button>
-          <Button size="lg" variant="outline" asChild>
+          <Button size="lg" variant="outline" asChild className="animate-scale-in animation-delay-300">
             <a href="/events">View Events</a>
           </Button>
         </div>

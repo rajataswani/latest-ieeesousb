@@ -42,7 +42,10 @@ export default function Join() {
             padding: "1rem",
             backgroundColor: "var(--primary)",
             color: "white",
+            transform: "scale(1)",
+            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
           },
+          className: "hover:scale-105 transition-transform duration-200",
           onDismiss: () => setShowNotification(false)
         }
       );
@@ -65,7 +68,10 @@ export default function Join() {
         padding: "1rem",
         backgroundColor: "var(--primary)",
         color: "white",
-      }
+        transform: "scale(1)",
+        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      },
+      className: "hover:scale-105 transition-transform duration-200"
     });
   };
 
@@ -73,7 +79,7 @@ export default function Join() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <main className="flex-grow pt-24 pb-16">
+      <main className="flex-grow pt-24 pb-16 animate-fade-in">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Join IEEE SOU SB</h1>
@@ -107,7 +113,7 @@ export default function Join() {
                 
                 <div className="space-y-2">
                   <Label htmlFor="college">College</Label>
-                  <Input id="college" defaultValue="Silver Oak University" />
+                  <Input id="college" placeholder="SOCET or ASOIT" />
                 </div>
                 
                 <div className="space-y-2">

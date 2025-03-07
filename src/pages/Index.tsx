@@ -34,6 +34,14 @@ export default function Index() {
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
     animatedElements.forEach((el) => observer.observe(el));
 
+    // Animate on-load elements
+    const animateOnLoadElements = document.querySelectorAll(".animate-on-load");
+    setTimeout(() => {
+      animateOnLoadElements.forEach((el) => {
+        el.classList.add("animated");
+      });
+    }, 100);
+
     return () => {
       animatedElements.forEach((el) => observer.unobserve(el));
     };

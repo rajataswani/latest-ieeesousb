@@ -104,7 +104,7 @@ export default function Navbar() {
               <img
                 src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/ieee_sou_sb_logo-removebg-preview.png"
                 alt="IEEE SOU SB Logo"
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto md:h-12 object-contain"
               />
             </Link>
           </div>
@@ -119,12 +119,12 @@ export default function Navbar() {
                       <>
                         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <div className="w-48 p-2">
+                          <div className="w-40 p-2">
                             {item.children.map((child) => (
                               <NavigationMenuLink asChild key={child.title}>
                                 <Link
                                   to={child.href}
-                                  className="block select-none rounded-md p-2 text-center leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  className="block select-none rounded-md p-2 text-xs text-center leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 >
                                   <div className="text-sm font-medium leading-none">{child.title}</div>
                                 </Link>
@@ -214,7 +214,7 @@ export default function Navbar() {
                         key={child.title}
                         to={child.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-3 py-2 rounded-md text-sm font-medium hover:bg-secondary transition-colors"
+                        className="block px-3 py-2 rounded-md text-xs font-medium hover:bg-secondary transition-colors"
                       >
                         {child.title}
                       </Link>

@@ -28,11 +28,11 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary/5 pt-16 pb-8">
+    <footer className="bg-primary/5 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           {/* Logo and description */}
-          <div className="col-span-1">
+          <div>
             <Link to="/" className="inline-block mb-4">
               {/* IMPORTANT: Replace this with dark mode logo when available */}
               <img
@@ -41,52 +41,15 @@ export default function Footer() {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground max-w-md">
               Silver Oak University IEEE SB aims to give an interactive platform for students to 
               develop professional and technical abilities. Since the start, it is successfully 
               organizing various events with well-defined subjects.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about/ieee-sou-sb" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/events" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link to="/members" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  Members
-                </Link>
-              </li>
-              <li>
-                <Link to="/awards" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  Awards
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* Contact Info */}
-          <div className="col-span-1">
+          <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="space-y-3">
               <div className="flex items-start">
@@ -144,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-border/50 text-center">
+        <div className="pt-6 border-t border-border/50 text-center">
           <p className="text-sm text-muted-foreground">
             &copy; Copyright Silver Oak University IEEE SB. All Rights Reserved.
           </p>

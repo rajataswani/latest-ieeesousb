@@ -4,8 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -18,6 +18,12 @@ export default function Contact() {
         "Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries", 
         {
           duration: 5000,
+          style: {
+            fontSize: "1rem",
+            padding: "1rem",
+            backgroundColor: "var(--primary)",
+            color: "white",
+          },
           onDismiss: () => setShowNotification(false)
         }
       );
@@ -33,8 +39,14 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form is inactive, just show the toast again
-    toast.info("Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries");
+    toast.info("Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries", {
+      style: {
+        fontSize: "1rem",
+        padding: "1rem",
+        backgroundColor: "var(--primary)",
+        color: "white",
+      }
+    });
   };
 
   return (
@@ -42,18 +54,16 @@ export default function Contact() {
       <Navbar />
       
       <main className="flex-grow pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have questions or want to learn more about IEEE SOU Student Branch? Get in touch with us!
+              Have a question or want to know more about our IEEE SOU SB? Reach out to us and we'll get back to you as soon as possible.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="glass rounded-lg p-8">
-              <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
-              
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="glass rounded-lg p-8 flex flex-col justify-center">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
@@ -72,46 +82,50 @@ export default function Contact() {
                 
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Your message" rows={4} />
+                  <Textarea id="message" placeholder="How can we help you?" rows={4} />
                 </div>
                 
                 <Button type="submit" className="w-full">Send Message</Button>
               </form>
             </div>
             
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Other ways to reach us</h2>
-              
-              <div className="glass rounded-lg p-8 mb-6">
-                <h3 className="text-xl font-semibold mb-4">Visit us</h3>
-                <p className="text-muted-foreground mb-4">
-                  Apple Lab, B-120<br />
-                  Silver Oak University<br />
-                  352,353 A, Nr. Bhavik Publications, Opp. Bhagwat Vidyapith<br />
-                  S.G.Highway, Ahmedabad, Gujarat - 382481
+            <div className="space-y-6">
+              <div className="glass rounded-lg p-6">
+                <h3 className="text-lg font-semibold mb-4">Visit Us</h3>
+                <p className="text-muted-foreground">
+                  352,353 A, Nr. Bhavik Publications, Opp. Bhagwat Vidyapith, S.G.Highway,
+                  Ahmedabad, Gujarat - 382481
                 </p>
-                <div className="aspect-video bg-muted rounded-md overflow-hidden">
-                  {/* Embed Google Maps iframe here */}
-                  <div className="w-full h-full flex items-center justify-center bg-muted">
-                    <p className="text-muted-foreground">Map Placeholder</p>
-                  </div>
+                
+                <div className="mt-4 aspect-video w-full rounded-md overflow-hidden">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.8794266384166!2d72.5171118!3d22.9888346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9aee6e5a940f%3A0x85070254cd47f10a!2sSilver%20Oak%20University!5e0!3m2!1sen!2sin!4v1654321234567!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy"
+                    title="Silver Oak University Map"
+                  ></iframe>
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="glass rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-2">Email</h3>
-                  <a href="mailto:aswanirajat@gmail.com" className="text-primary hover:underline">
-                    aswanirajat@gmail.com
-                  </a>
-                </div>
-                
-                <div className="glass rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                  <a href="tel:+91 07966046304" className="text-primary hover:underline">
-                    +91 07966046304
-                  </a>
-                </div>
+              <div className="glass rounded-lg p-6">
+                <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li>
+                    <span className="font-medium">Email:</span>{" "}
+                    <a href="mailto:aswanirajat@gmail.com" className="hover:text-primary transition-colors">
+                      aswanirajat@gmail.com
+                    </a>
+                  </li>
+                  <li>
+                    <span className="font-medium">Phone:</span> +91 07966046304
+                  </li>
+                  <li>
+                    <span className="font-medium">Location:</span> Apple Lab, B-120, Silver Oak University
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

@@ -110,9 +110,28 @@ export default function EventsSection() {
         <div className="w-24 h-1.5 bg-primary mx-auto rounded-full mb-6 animate-on-scroll" />
       </div>
 
-      <div className="animate-on-scroll max-w-4xl mx-auto relative">
+      <div className="animate-on-scroll max-w-4xl mx-auto relative px-10">
+        {/* Navigation arrows outside the slider */}
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full bg-background/80 hover:bg-background shadow-md"
+          onClick={() => handleManualChange(prevSlide)}
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+        
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full bg-background/80 hover:bg-background shadow-md"
+          onClick={() => handleManualChange(nextSlide)}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </Button>
+
         <div className="relative overflow-hidden rounded-xl shadow-lg">
-          <div className="flex transition-transform duration-500 ease-in-out h-[450px]" 
+          <div className="flex transition-transform duration-500 ease-in-out h-[450px] md:h-[400px]" 
                style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
             {SAMPLE_EVENTS.map((event, index) => (
               <div 
@@ -154,25 +173,6 @@ export default function EventsSection() {
               </div>
             ))}
           </div>
-          
-          {/* Navigation arrows */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full bg-background/80 hover:bg-background"
-            onClick={() => handleManualChange(prevSlide)}
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
-          
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full bg-background/80 hover:bg-background"
-            onClick={() => handleManualChange(nextSlide)}
-          >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
           
           {/* Dots indicator */}
           <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">

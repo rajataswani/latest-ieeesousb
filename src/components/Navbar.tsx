@@ -119,12 +119,12 @@ export default function Navbar() {
                       <>
                         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <div className="grid w-[300px] gap-2 p-2 md:w-[300px] md:grid-cols-1">
+                          <div className="w-48 p-2">
                             {item.children.map((child) => (
                               <NavigationMenuLink asChild key={child.title}>
                                 <Link
                                   to={child.href}
-                                  className="block select-none rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  className="block select-none rounded-md p-2 text-center leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 >
                                   <div className="text-sm font-medium leading-none">{child.title}</div>
                                 </Link>
@@ -167,7 +167,7 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          <div className="flex items-center md:hidden">
             <Button 
               variant="outline" 
               size="sm" 

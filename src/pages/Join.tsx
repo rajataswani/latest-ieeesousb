@@ -37,6 +37,12 @@ export default function Join() {
         "Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for IEEE membership", 
         {
           duration: 5000,
+          style: {
+            fontSize: "1rem",
+            padding: "1rem",
+            backgroundColor: "var(--primary)",
+            color: "white",
+          },
           onDismiss: () => setShowNotification(false)
         }
       );
@@ -53,7 +59,14 @@ export default function Join() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form is inactive, just show the toast again
-    toast.info("Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for IEEE membership");
+    toast.info("Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for IEEE membership", {
+      style: {
+        fontSize: "1rem",
+        padding: "1rem",
+        backgroundColor: "var(--primary)",
+        color: "white",
+      }
+    });
   };
 
   return (

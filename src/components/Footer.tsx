@@ -34,8 +34,9 @@ export default function Footer() {
           {/* Logo and description */}
           <div className="col-span-1">
             <Link to="/" className="inline-block mb-4">
+              {/* IMPORTANT: Replace this with dark mode logo when available */}
               <img
-                src="http://ieee.socet.edu.in/wp-content/uploads/2023/08/KNOW-YOUR-PC3-01-01.jpeg-scaled-e1741371473380.jpg"
+                src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/ieee_sou_sb_logo-removebg-preview.png"
                 alt="IEEE SOU SB Logo"
                 className="h-16 w-auto"
               />

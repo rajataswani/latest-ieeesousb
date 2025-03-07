@@ -1,8 +1,9 @@
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Event } from "@/types";
+import { cn } from "@/lib/utils";
 
 const SAMPLE_EVENTS: Event[] = [
   {
@@ -36,7 +37,40 @@ const SAMPLE_EVENTS: Event[] = [
 
 export default function EventsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % SAMPLE_EVENTS.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + SAMPLE_EVENTS.length) % SAMPLE_EVENTS.length);
+  };
+
+  // Auto slide functionality
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
+  // Reset interval when manually changing slides
+  const handleManualChange = (callback: () => void) => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    callback();
+    intervalRef.current = setInterval(() => {
+      nextSlide();
+    }, 5000);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,6 +96,8 @@ export default function EventsSection() {
     };
   }, []);
 
+  const currentEvent = SAMPLE_EVENTS[activeIndex];
+
   return (
     <div 
       ref={sectionRef}
@@ -74,46 +110,87 @@ export default function EventsSection() {
         <div className="w-24 h-1.5 bg-primary mx-auto rounded-full mb-6 animate-on-scroll" />
       </div>
 
-      <div 
-        ref={scrollContainerRef}
-        className="animate-on-scroll flex overflow-x-auto gap-6 pb-8 -mx-4 px-4 snap-x snap-mandatory scrollbar-none"
-      >
-        {SAMPLE_EVENTS.map((event) => (
-          <div 
-            key={event.id}
-            className="min-w-[320px] md:min-w-[400px] flex-none snap-center glass rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1"
-          >
-            <img 
-              src={event.image} 
-              alt={event.title} 
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-              <div className="flex items-center text-sm text-muted-foreground mb-1">
-                <Calendar className="h-4 w-4 mr-2" />
-                <span>{event.date}</span>
-              </div>
-              <div className="flex items-center text-sm text-muted-foreground mb-4">
-                <Clock className="h-4 w-4 mr-2" />
-                <span>{event.time}</span>
-              </div>
-              <p className="mb-4 text-sm line-clamp-2">{event.description}</p>
-              <Button 
-                variant="ghost" 
-                className="group text-primary p-0 h-auto" 
-                asChild
+      <div className="animate-on-scroll max-w-4xl mx-auto relative">
+        <div className="relative overflow-hidden rounded-xl shadow-lg">
+          <div className="flex transition-transform duration-500 ease-in-out h-[450px]" 
+               style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
+            {SAMPLE_EVENTS.map((event, index) => (
+              <div 
+                key={event.id}
+                className={cn(
+                  "min-w-full flex flex-col md:flex-row glass transition-opacity duration-300",
+                  index === activeIndex ? "opacity-100" : "opacity-0"
+                )}
               >
-                <a href={event.link} target="_blank" rel="noopener noreferrer">
-                  Learn More 
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
-            </div>
+                <div className="md:w-1/2">
+                  <img 
+                    src={event.image} 
+                    alt={event.title} 
+                    className="w-full h-[200px] md:h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 md:w-1/2 flex flex-col justify-center">
+                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
+                  <div className="flex items-center text-sm text-muted-foreground mb-1">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    <span>{event.date}</span>
+                  </div>
+                  <div className="flex items-center text-sm text-muted-foreground mb-4">
+                    <Clock className="h-4 w-4 mr-2" />
+                    <span>{event.time}</span>
+                  </div>
+                  <p className="mb-4">{event.description}</p>
+                  <Button 
+                    variant="ghost" 
+                    className="group text-primary p-0 h-auto self-start mt-auto" 
+                    asChild
+                  >
+                    <a href={event.link} target="_blank" rel="noopener noreferrer">
+                      Learn More 
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+          
+          {/* Navigation arrows */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full bg-background/80 hover:bg-background"
+            onClick={() => handleManualChange(prevSlide)}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+          
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full bg-background/80 hover:bg-background"
+            onClick={() => handleManualChange(nextSlide)}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
+          
+          {/* Dots indicator */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+            {SAMPLE_EVENTS.map((_, index) => (
+              <button
+                key={index}
+                className={cn(
+                  "w-2 h-2 rounded-full transition-colors",
+                  index === activeIndex ? "bg-primary" : "bg-gray-300 dark:bg-gray-600"
+                )}
+                onClick={() => handleManualChange(() => setActiveIndex(index))}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-
+      
       <div className="text-center mt-8">
         <Button asChild>
           <a href="/events">View All Events</a>

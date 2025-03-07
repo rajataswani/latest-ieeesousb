@@ -40,3 +40,22 @@ export type FeatureItem = {
   alt: string;
   id: number;
 };
+
+export type MemberType = {
+  id: string;
+  name: string;
+  department: string;
+  designation: string;
+  enrolledYear: string;
+  image: string;
+  linkedinUrl: string;
+  type: "executive" | "core" | "member";
+};
+
+export type Award = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  year: string;
+};

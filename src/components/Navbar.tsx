@@ -26,32 +26,26 @@ const NAV_ITEMS: NavItem[] = [
       {
         title: "IEEE",
         href: "/about/ieee",
-        description: "Learn about the world's largest technical professional organization.",
       },
       {
         title: "IEEE SOU SB",
         href: "/about/ieee-sou-sb",
-        description: "About Silver Oak University IEEE Student Branch.",
       },
       {
         title: "IEEE SOU WIE SB AG",
         href: "/about/ieee-sou-wie-sb-ag",
-        description: "About IEEE SOU Women in Engineering Affinity Group.",
       },
       {
         title: "IEEE SOU SPS SBC",
         href: "/about/ieee-sou-sps-sbc",
-        description: "About IEEE SOU Signal Processing Society Student Branch Chapter.",
       },
       {
         title: "IEEE SOU CS SBC",
         href: "/about/ieee-sou-cs-sbc",
-        description: "About IEEE SOU Computer Society Student Branch Chapter.",
       },
       {
         title: "IEEE SOU SIGHT SBG",
         href: "/about/ieee-sou-sight-sbg",
-        description: "About IEEE SOU Special Interest Group on Humanitarian Technology.",
       },
     ],
   },
@@ -96,8 +90,8 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
         isScrolled
-          ? "glass py-2 shadow-md"
-          : "py-4 bg-transparent"
+          ? "bg-white/90 dark:bg-gray-900/90 py-2 shadow-md backdrop-blur-sm"
+          : "py-4 bg-white dark:bg-gray-900"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,10 +99,12 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
+              {/* IMPORTANT: Replace this with dark mode logo when available */}
+              {/* For dark mode: theme === "dark" ? "DARK_MODE_LOGO_URL" : "LIGHT_MODE_LOGO_URL" */}
               <img
-                src="http://ieee.socet.edu.in/wp-content/uploads/2023/08/KNOW-YOUR-PC3-01-01.jpeg-scaled-e1741371473380.jpg"
+                src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/ieee_sou_sb_logo-removebg-preview.png"
                 alt="IEEE SOU SB Logo"
-                className="h-10 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
             </Link>
           </div>
@@ -123,17 +119,14 @@ export default function Navbar() {
                       <>
                         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          <div className="grid w-[300px] gap-2 p-2 md:w-[300px] md:grid-cols-1">
                             {item.children.map((child) => (
                               <NavigationMenuLink asChild key={child.title}>
                                 <Link
                                   to={child.href}
-                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  className="block select-none rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 >
                                   <div className="text-sm font-medium leading-none">{child.title}</div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                    {child.description}
-                                  </p>
                                 </Link>
                               </NavigationMenuLink>
                             ))}
@@ -153,18 +146,37 @@ export default function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme} 
-              className="ml-2"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+            <div className="flex items-center gap-2 ml-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="text-primary border-primary hover:bg-primary/10"
+                asChild
+              >
+                <Link to="/join">Join IEEE</Link>
+              </Button>
+              
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={toggleTheme} 
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </Button>
+            </div>
           </nav>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-primary border-primary hover:bg-primary/10 mr-2"
+              asChild
+            >
+              <Link to="/join">Join</Link>
+            </Button>
+            
             <Button 
               variant="ghost" 
               size="icon" 
@@ -173,6 +185,7 @@ export default function Navbar() {
             >
               {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
+            
             <Button
               variant="ghost"
               size="icon"
@@ -185,7 +198,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`${isMobileMenuOpen ? "block" : "hidden"} md:hidden glass`}>
+      <div className={`${isMobileMenuOpen ? "block" : "hidden"} md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {NAV_ITEMS.map((item) => (
             <React.Fragment key={item.title}>

@@ -1,14 +1,55 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import { useEffect } from "react";
+import HeroSection from "@/components/HeroSection";
+import WhyJoinSection from "@/components/WhyJoinSection";
+import CountUpSection from "@/components/CountUpSection";
+import FounderMessage from "@/components/FounderMessage";
+import EventsSection from "@/components/EventsSection";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function Index() {
+  useEffect(() => {
+    // Smooth scroll to element when hash is in URL
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+    animatedElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      animatedElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        <HeroSection />
+        <WhyJoinSection />
+        <CountUpSection />
+        <FounderMessage />
+        <EventsSection />
+      </main>
+      <Footer />
     </div>
   );
-};
-
-export default Index;
+}

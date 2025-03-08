@@ -18,7 +18,7 @@ export default function Contact() {
     if (showNotification) {
       const id = toast.info(
         <div className="flex items-start justify-between w-full">
-          <div>Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
+          <div className="text-foreground">Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
           <button 
             onClick={() => toast.dismiss(id)} 
             className="ml-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
@@ -29,7 +29,7 @@ export default function Contact() {
         {
           duration: 5000,
           position: "bottom-right",
-          className: "bg-gray-100 dark:bg-gray-800 text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
+          className: "bg-background text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
           style: {
             fontSize: "1.1rem",
             padding: "1.25rem",
@@ -60,7 +60,7 @@ export default function Contact() {
     e.preventDefault();
     toast.info(
       <div className="flex items-start justify-between w-full">
-        <div>Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
+        <div className="text-foreground">Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
         <button 
           onClick={() => toast.dismiss()} 
           className="ml-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
@@ -70,7 +70,7 @@ export default function Contact() {
       </div>,
       {
         position: "bottom-right",
-        className: "bg-gray-100 dark:bg-gray-800 text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
+        className: "bg-background text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
         style: {
           fontSize: "1.1rem",
           padding: "1.25rem",

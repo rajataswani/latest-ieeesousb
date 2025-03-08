@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,7 +15,7 @@ const BRANCH_AWARDS: Award[] = [
     id: "b1",
     title: "IEEE R10 SAC Outstanding Student Branch Award",
     description: "We are immensely proud to announce that Silver Oak University IEEE Student Branch, taking the legacy ahead, has received the award of \"IEEE R10 SAC Outstanding Student Branch 2021\" at IEEE Sparklers International SB 2021 consisting of over 1644 Student Branches. The Award is most prestigious for any Student Branch at the Regional Level.",
-    image: "https://images.unsplash.com/photo-1618455366902-cf5dd6617ebb?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=600&q=80",
     year: "2021"
   },
   {
@@ -54,7 +53,7 @@ const STUDENT_AWARDS: Award[] = [
     id: "s1",
     title: "IEEE Young Professionals Award",
     description: "Our student Aryan Patel received the IEEE Young Professionals Award for his exceptional technical contributions and leadership in organizing impactful events within the student branch.",
-    image: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
     year: "2022"
   },
   {
@@ -105,11 +104,11 @@ export default function Awards() {
                 {BRANCH_AWARDS.map(award => (
                   <div key={award.id} className="glass rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                     <div className="flex flex-col md:flex-row">
-                      <div className="md:w-1/3">
+                      <div className="md:w-1/3 h-60">
                         <img 
                           src={award.image} 
                           alt={award.title} 
-                          className="w-full h-60 md:h-full object-cover"
+                          className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="p-6 md:w-2/3">
@@ -132,11 +131,11 @@ export default function Awards() {
                 {STUDENT_AWARDS.map(award => (
                   <div key={award.id} className="glass rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                     <div className="flex flex-col md:flex-row">
-                      <div className="md:w-1/3">
+                      <div className="md:w-1/3 h-60">
                         <img 
                           src={award.image} 
                           alt={award.title} 
-                          className="w-full h-60 md:h-full object-cover"
+                          className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="p-6 md:w-2/3">

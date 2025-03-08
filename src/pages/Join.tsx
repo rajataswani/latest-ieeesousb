@@ -19,7 +19,7 @@ export default function Join() {
     if (showNotification) {
       const id = toast.info(
         <div className="flex items-start justify-between w-full">
-          <div>Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
+          <div className="text-foreground">Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
           <button 
             onClick={() => toast.dismiss(id)} 
             className="ml-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
@@ -30,7 +30,7 @@ export default function Join() {
         {
           duration: 5000,
           position: "bottom-right",
-          className: "bg-gray-100 dark:bg-gray-800 text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
+          className: "bg-background text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
           style: {
             fontSize: "1.1rem",
             padding: "1.25rem",
@@ -61,7 +61,7 @@ export default function Join() {
     e.preventDefault();
     toast.info(
       <div className="flex items-start justify-between w-full">
-        <div>Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
+        <div className="text-foreground">Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
         <button 
           onClick={() => toast.dismiss()} 
           className="ml-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
@@ -71,7 +71,7 @@ export default function Join() {
       </div>,
       {
         position: "bottom-right",
-        className: "bg-gray-100 dark:bg-gray-800 text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
+        className: "bg-background text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
         style: {
           fontSize: "1.1rem",
           padding: "1.25rem",

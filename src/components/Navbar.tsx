@@ -102,8 +102,8 @@ export default function Navbar() {
               <img
                 src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/ieee_sou_sb_logo-removebg-preview.png"
                 alt="IEEE SOU SB Logo"
-                className="h-7 w-auto md:h-12 object-contain"
-                style={{ maxWidth: '220px' }}
+                className="h-9 w-auto md:h-16 object-contain" /* Increased by 20% for mobile, 50% for desktop */
+                style={{ maxWidth: '250px' }}
               />
             </Link>
           </div>
@@ -118,12 +118,12 @@ export default function Navbar() {
                       <>
                         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <div className="w-52 p-2">
+                          <div className="w-60 p-2"> {/* Increased width for dropdown */}
                             {item.children.map((child) => (
                               <NavigationMenuLink asChild key={child.title}>
                                 <Link
                                   to={child.href}
-                                  className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-center" /* Added text-center */
                                 >
                                   <div className="text-sm font-medium leading-none">{child.title}</div>
                                 </Link>

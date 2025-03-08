@@ -41,7 +41,8 @@ export default function Contact() {
         }
       );
       
-      setCustomToast(id);
+      // Convert the toast id to string if it's a number
+      setCustomToast(id ? String(id) : null);
     }
     
     // Auto hide notification after 10 seconds

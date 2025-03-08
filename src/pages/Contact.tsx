@@ -88,7 +88,7 @@ export default function Contact() {
       <main className="flex-grow pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-load">Contact Us</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-load text-foreground">Contact Us</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-on-load animation-delay-300">
               Have a question or want to know more about our IEEE SOU SB? Reach out to us and we'll get back to you as soon as possible.
             </p>
@@ -98,23 +98,23 @@ export default function Contact() {
             <div className="glass rounded-lg p-8 flex flex-col justify-center animate-on-load animation-delay-500">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your name" />
+                  <Label htmlFor="name" className="text-foreground">Name</Label>
+                  <Input id="name" placeholder="Your name" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Your email" />
+                  <Label htmlFor="email" className="text-foreground">Email</Label>
+                  <Input id="email" type="email" placeholder="Your email" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
-                  <Input id="phone" placeholder="Your phone number" />
+                  <Label htmlFor="phone" className="text-foreground">Phone</Label>
+                  <Input id="phone" placeholder="Your phone number" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="How can we help you?" rows={4} />
+                  <Label htmlFor="message" className="text-foreground">Message</Label>
+                  <Textarea id="message" placeholder="How can we help you?" rows={4} className="text-foreground" />
                 </div>
                 
                 <Button type="submit" className="w-full">Send Message</Button>
@@ -123,7 +123,7 @@ export default function Contact() {
             
             <div className="space-y-6 animate-on-load animation-delay-700">
               <div className="glass rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-4">Visit Us</h3>
+                <h3 className="text-lg font-semibold mb-4 text-foreground">Visit Us</h3>
                 <p className="text-muted-foreground">
                   352,353 A, Nr. Bhavik Publications, Opp. Bhagwat Vidyapith, S.G.Highway,
                   Ahmedabad, Gujarat - 382481
@@ -143,19 +143,19 @@ export default function Contact() {
               </div>
               
               <div className="glass rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
+                <h3 className="text-lg font-semibold mb-4 text-foreground">Contact Information</h3>
                 <ul className="space-y-3 text-muted-foreground">
                   <li>
-                    <span className="font-medium">Email:</span>{" "}
+                    <span className="font-medium text-foreground">Email:</span>{" "}
                     <a href="mailto:aswanirajat@gmail.com" className="hover:text-primary transition-colors">
                       aswanirajat@gmail.com
                     </a>
                   </li>
                   <li>
-                    <span className="font-medium">Phone:</span> +91 07966046304
+                    <span className="font-medium text-foreground">Phone:</span> +91 07966046304
                   </li>
                   <li>
-                    <span className="font-medium">Location:</span> Apple Lab, B-120, Silver Oak University
+                    <span className="font-medium text-foreground">Location:</span> Apple Lab, B-120, Silver Oak University
                   </li>
                 </ul>
               </div>

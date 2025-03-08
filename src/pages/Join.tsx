@@ -89,7 +89,7 @@ export default function Join() {
       <main className="flex-grow pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-load">Join IEEE SOU SB</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-load text-foreground">Join IEEE SOU SB</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-on-load animation-delay-300">
               Get access to cutting-edge information, networking opportunities, career enhancement, and other exclusive member benefits.
             </p>
@@ -99,35 +99,35 @@ export default function Join() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="Your full name" />
+                  <Label htmlFor="name" className="text-foreground">Full Name</Label>
+                  <Input id="name" placeholder="Your full name" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Your email" />
+                  <Label htmlFor="email" className="text-foreground">Email</Label>
+                  <Input id="email" type="email" placeholder="Your email" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
-                  <Input id="phone" placeholder="Your phone number" />
+                  <Label htmlFor="phone" className="text-foreground">Phone</Label>
+                  <Input id="phone" placeholder="Your phone number" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="enrollment">Enrollment Number</Label>
-                  <Input id="enrollment" placeholder="Your enrollment number" />
+                  <Label htmlFor="enrollment" className="text-foreground">Enrollment Number</Label>
+                  <Input id="enrollment" placeholder="Your enrollment number" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="college">College</Label>
-                  <Input id="college" placeholder="SOCET or ASOIT" />
+                  <Label htmlFor="college" className="text-foreground">College</Label>
+                  <Input id="college" placeholder="SOCET or ASOIT" className="text-foreground" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="department">Department</Label>
+                  <Label htmlFor="department" className="text-foreground">Department</Label>
                   <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select department" />
+                    <SelectTrigger className="text-foreground">
+                      <SelectValue placeholder="Select department" className="text-foreground" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="ce">Computer Engineering</SelectItem>
@@ -142,10 +142,10 @@ export default function Join() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="semester">Semester</Label>
+                  <Label htmlFor="semester" className="text-foreground">Semester</Label>
                   <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select semester" />
+                    <SelectTrigger className="text-foreground">
+                      <SelectValue placeholder="Select semester" className="text-foreground" />
                     </SelectTrigger>
                     <SelectContent>
                       {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
@@ -158,10 +158,10 @@ export default function Join() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="year">Academic Year</Label>
+                  <Label htmlFor="year" className="text-foreground">Academic Year</Label>
                   <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select year" />
+                    <SelectTrigger className="text-foreground">
+                      <SelectValue placeholder="Select year" className="text-foreground" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="1">First Year</SelectItem>
@@ -174,11 +174,12 @@ export default function Join() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="reason">Why do you want to join IEEE?</Label>
+                <Label htmlFor="reason" className="text-foreground">Why do you want to join IEEE?</Label>
                 <Textarea 
                   id="reason" 
                   placeholder="Tell us why you're interested in joining IEEE SOU SB"
                   rows={4}
+                  className="text-foreground"
                 />
               </div>
               

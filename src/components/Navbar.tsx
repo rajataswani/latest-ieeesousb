@@ -99,13 +99,11 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              {/* IMPORTANT: Replace this with dark mode logo when available */}
-              {/* For dark mode: theme === "dark" ? "DARK_MODE_LOGO_URL" : "LIGHT_MODE_LOGO_URL" */}
               <img
                 src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/ieee_sou_sb_logo-removebg-preview.png"
                 alt="IEEE SOU SB Logo"
-                className="h-12 w-auto md:h-12 object-contain max-h-12 sm:max-h-none"
-                style={{ maxWidth: '180px' }}
+                className="h-7 w-auto md:h-12 object-contain"
+                style={{ maxWidth: '220px' }}
               />
             </Link>
           </div>
@@ -120,12 +118,12 @@ export default function Navbar() {
                       <>
                         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <div className="w-40 p-2">
+                          <div className="w-52 p-2">
                             {item.children.map((child) => (
                               <NavigationMenuLink asChild key={child.title}>
                                 <Link
                                   to={child.href}
-                                  className="block select-none rounded-md p-2 text-xs text-center leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 >
                                   <div className="text-sm font-medium leading-none">{child.title}</div>
                                 </Link>

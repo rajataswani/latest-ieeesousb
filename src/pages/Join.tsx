@@ -8,52 +8,77 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { X } from "lucide-react";
 
 export default function Join() {
   const [showNotification, setShowNotification] = useState(true);
+  const [customToast, setCustomToast] = useState<string | null>(null);
   
   useEffect(() => {
     // Show notification when component mounts
     if (showNotification) {
-      toast.info(
-        "Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries", 
+      const id = toast.info(
+        <div className="flex items-start justify-between w-full">
+          <div>Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
+          <button 
+            onClick={() => toast.dismiss(id)} 
+            className="ml-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
+          >
+            <X size={16} />
+          </button>
+        </div>,
         {
           duration: 5000,
+          position: "bottom-right",
+          className: "bg-gray-100 dark:bg-gray-800 text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
           style: {
             fontSize: "1.1rem",
             padding: "1.25rem",
-            backgroundColor: "var(--primary)",
-            color: "white",
+            backgroundColor: "var(--background)",
+            color: "var(--foreground)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
           },
-          position: "top-center",
           onDismiss: () => setShowNotification(false),
-          className: "hover:scale-105 transition-transform"
         }
       );
+      
+      setCustomToast(id);
     }
     
-    // Auto hide notification after 4 seconds
+    // Auto hide notification after 10 seconds
     const timer = setTimeout(() => {
       setShowNotification(false);
-    }, 4000);
+      if (customToast) {
+        toast.dismiss(customToast);
+      }
+    }, 10000);
     
     return () => clearTimeout(timer);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.info("Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries", {
-      style: {
-        fontSize: "1.1rem",
-        padding: "1.25rem",
-        backgroundColor: "var(--primary)",
-        color: "white",
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-      },
-      position: "top-center",
-      className: "hover:scale-105 transition-transform"
-    });
+    toast.info(
+      <div className="flex items-start justify-between w-full">
+        <div>Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries</div>
+        <button 
+          onClick={() => toast.dismiss()} 
+          className="ml-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full"
+        >
+          <X size={16} />
+        </button>
+      </div>,
+      {
+        position: "bottom-right",
+        className: "bg-gray-100 dark:bg-gray-800 text-foreground border border-gray-200 dark:border-gray-700 shadow-lg",
+        style: {
+          fontSize: "1.1rem",
+          padding: "1.25rem",
+          backgroundColor: "var(--background)",
+          color: "var(--foreground)",
+        },
+      }
+    );
   };
   
   return (

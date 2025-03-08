@@ -14,10 +14,86 @@ type MemberType = {
   enrolledYear: string;
   image: string;
   linkedinUrl: string;
-  type: "executive" | "core" | "member";
+  type: "faculty" | "advisory" | "executive" | "core" | "member";
 };
 
-const SAMPLE_MEMBERS: MemberType[] = [
+const FACULTY_MEMBERS: MemberType[] = [
+  {
+    id: "f1",
+    name: "Prof. Digant Parmar",
+    department: "Computer Engineering",
+    designation: "Assistant Professor",
+    enrolledYear: "2018",
+    image: "https://xsgames.co/randomusers/avatar.php?g=male&seed=21",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "faculty"
+  },
+  {
+    id: "f2",
+    name: "Prof. Mayuresh Kulkarani",
+    department: "Electronics Engineering",
+    designation: "Senior Faculty",
+    enrolledYear: "2017",
+    image: "https://xsgames.co/randomusers/avatar.php?g=male&seed=22",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "faculty"
+  },
+  {
+    id: "f3",
+    name: "Prof. Kiran Shah",
+    department: "Information Technology",
+    designation: "Associate Professor",
+    enrolledYear: "2019",
+    image: "https://xsgames.co/randomusers/avatar.php?g=male&seed=23",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "faculty"
+  }
+];
+
+const ADVISORY_MEMBERS: MemberType[] = [
+  {
+    id: "a1",
+    name: "Dr. Rajesh Mehta",
+    department: "Computer Science",
+    designation: "IEEE Senior Member",
+    enrolledYear: "2020",
+    image: "https://xsgames.co/randomusers/avatar.php?g=male&seed=11",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "advisory"
+  },
+  {
+    id: "a2",
+    name: "Dr. Priya Sharma",
+    department: "Electronics & Communication",
+    designation: "Industry Expert",
+    enrolledYear: "2021",
+    image: "https://xsgames.co/randomusers/avatar.php?g=female&seed=12",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "advisory"
+  },
+  {
+    id: "a3",
+    name: "Dr. Anand Patel",
+    department: "Electrical Engineering",
+    designation: "Research Mentor",
+    enrolledYear: "2019",
+    image: "https://xsgames.co/randomusers/avatar.php?g=male&seed=13",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "advisory"
+  },
+  {
+    id: "a4",
+    name: "Dr. Neha Desai",
+    department: "Computer Engineering",
+    designation: "Academic Advisor",
+    enrolledYear: "2020",
+    image: "https://xsgames.co/randomusers/avatar.php?g=female&seed=14",
+    linkedinUrl: "https://linkedin.com/in/",
+    type: "advisory"
+  }
+];
+
+const STUDENT_MEMBERS: MemberType[] = [
   {
     id: "1",
     name: "Rajat Aswani",
@@ -120,24 +196,40 @@ const SAMPLE_MEMBERS: MemberType[] = [
   }
 ];
 
+// Combine all members
+const ALL_MEMBERS = [...FACULTY_MEMBERS, ...ADVISORY_MEMBERS, ...STUDENT_MEMBERS];
+
 export default function Members() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredMembers, setFilteredMembers] = useState<MemberType[]>(SAMPLE_MEMBERS);
+  const [filteredMembers, setFilteredMembers] = useState<{
+    faculty: MemberType[];
+    advisory: MemberType[];
+    students: MemberType[];
+  }>({
+    faculty: FACULTY_MEMBERS,
+    advisory: ADVISORY_MEMBERS,
+    students: STUDENT_MEMBERS,
+  });
 
   useEffect(() => {
-    const filtered = SAMPLE_MEMBERS.filter(member => 
+    const filtered = ALL_MEMBERS.filter(member => 
       member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       member.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
       member.designation.toLowerCase().includes(searchTerm.toLowerCase())
     );
     
-    // Sort members by type: executive first, then core, then regular members
-    filtered.sort((a, b) => {
+    // Sort student members by type: executive first, then core, then regular members
+    const filteredStudents = filtered.filter(m => m.type === "executive" || m.type === "core" || m.type === "member");
+    filteredStudents.sort((a, b) => {
       const typeOrder = { executive: 1, core: 2, member: 3 };
-      return typeOrder[a.type] - typeOrder[b.type];
+      return typeOrder[a.type as "executive" | "core" | "member"] - typeOrder[b.type as "executive" | "core" | "member"];
     });
     
-    setFilteredMembers(filtered);
+    setFilteredMembers({
+      faculty: filtered.filter(m => m.type === "faculty"),
+      advisory: filtered.filter(m => m.type === "advisory"),
+      students: filteredStudents,
+    });
   }, [searchTerm]);
 
   const getBadgeVariant = (type: string) => {
@@ -146,6 +238,8 @@ export default function Members() {
         return "default";
       case "core":
         return "secondary";
+      case "advisory":
+        return "outline";
       default:
         return "outline";
     }
@@ -157,6 +251,8 @@ export default function Members() {
         return "bg-amber-500 hover:bg-amber-600 border-none";
       case "core":
         return "bg-gray-400 hover:bg-gray-500 border-none";
+      case "advisory":
+        return "bg-blue-500 hover:bg-blue-600 text-white border-none";
       default:
         return "";
     }
@@ -168,9 +264,61 @@ export default function Members() {
         return "exe";
       case "core":
         return "core";
+      case "advisory":
+        return "advisory";
       default:
         return "member";
     }
+  };
+
+  const totalFilteredCount = filteredMembers.faculty.length + filteredMembers.advisory.length + filteredMembers.students.length;
+
+  const renderMemberSection = (title: string, members: MemberType[]) => {
+    if (members.length === 0) return null;
+    
+    return (
+      <div className="mb-12">
+        <h2 className="text-2xl font-bold mb-6 border-l-4 border-primary pl-3">{title}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {members.map(member => (
+            <div key={member.id} className="glass rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+              <div className="p-6">
+                <div className="flex items-start mb-4">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-16 h-16 rounded-full object-cover mr-4"
+                  />
+                  <div>
+                    <div className="flex items-center">
+                      <h3 className="font-bold text-lg">{member.name}</h3>
+                      <a 
+                        href={member.linkedinUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="ml-2 text-primary hover:text-primary/80"
+                      >
+                        <Linkedin className="h-4 w-4" />
+                      </a>
+                    </div>
+                    {member.type !== "faculty" && (
+                      <Badge variant={getBadgeVariant(member.type)} className={`mt-1 ${getBadgeStyle(member.type)}`}>
+                        {getBadgeText(member.type)}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+                <div className="space-y-1 text-sm">
+                  <p><span className="font-medium">Department:</span> {member.department}</p>
+                  <p><span className="font-medium">Designation:</span> {member.designation}</p>
+                  <p><span className="font-medium">Enrolled:</span> {member.enrolledYear}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -199,46 +347,13 @@ export default function Members() {
             </div>
             
             <div className="text-sm text-muted-foreground">
-              Showing <span className="font-semibold">{filteredMembers.length}</span> members
+              Showing <span className="font-semibold">{totalFilteredCount}</span> members
             </div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredMembers.map(member => (
-              <div key={member.id} className="glass rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="p-6">
-                  <div className="flex items-start mb-4">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <div className="flex items-center">
-                        <h3 className="font-bold text-lg">{member.name}</h3>
-                        <a 
-                          href={member.linkedinUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="ml-2 text-primary hover:text-primary/80"
-                        >
-                          <Linkedin className="h-4 w-4" />
-                        </a>
-                      </div>
-                      <Badge variant={getBadgeVariant(member.type)} className={`mt-1 ${getBadgeStyle(member.type)}`}>
-                        {getBadgeText(member.type)}
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="space-y-1 text-sm">
-                    <p><span className="font-medium">Department:</span> {member.department}</p>
-                    <p><span className="font-medium">Designation:</span> {member.designation}</p>
-                    <p><span className="font-medium">Enrolled:</span> {member.enrolledYear}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {renderMemberSection("Faculty Members", filteredMembers.faculty)}
+          {renderMemberSection("Advisory Board", filteredMembers.advisory)}
+          {renderMemberSection("Student Members", filteredMembers.students)}
         </div>
       </main>
       

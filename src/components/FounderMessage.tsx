@@ -1,6 +1,7 @@
 
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 
 export default function FounderMessage() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -48,16 +49,16 @@ export default function FounderMessage() {
             "bg-ieee-blue/5 dark:bg-ieee-blue/10 border border-ieee-blue/20",
             "shadow-md hover:shadow-lg transition-all duration-300"
           )}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="flex justify-center md:justify-start md:pl-4">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-4 flex justify-center md:justify-start">
                 <img 
                   src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/satviksir.jpg"
                   alt="Dr. Satvik Khara"
-                  className="rounded-lg shadow-md max-w-[200px] h-auto"
+                  className="rounded-lg shadow-md max-w-[240px] w-full h-auto"
                 />
               </div>
               
-              <div className="relative z-10">
+              <div className="md:col-span-8 relative z-10">
                 <blockquote className="text-lg italic mb-6 text-balance">
                   "My message to everyone thinking about joining Silver Oak University IEEE SB would be
                   that here you will get 360° development. You will be technically updated with various

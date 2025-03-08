@@ -17,19 +17,19 @@ export default function IEEEOUSSBWIE() {
           <div className="prose dark:prose-invert max-w-none">
             <section className="mb-12 glass p-8 rounded-lg animate-on-load animation-delay-500">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Vision</h2>
-              <ul className="list-disc pl-5 space-y-2 text-foreground">
-                <li>Equal access to knowledge.</li>
-                <li>Encourage women in the potency of engineering.</li>
-                <li>Enhance the share of women's voices.</li>
+              <ul className="list-disc pl-5 space-y-2">
+                <li className="text-foreground">Equal access to knowledge.</li>
+                <li className="text-foreground">Encourage women in the potency of engineering.</li>
+                <li className="text-foreground">Enhance the share of women's voices.</li>
               </ul>
             </section>
             
             <section className="mb-12 glass p-8 rounded-lg animate-on-load animation-delay-700">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Mission</h2>
-              <ul className="list-disc pl-5 space-y-2 text-foreground">
-                <li>Betterment of society.</li>
-                <li>Empower women in leadership roles.</li>
-                <li>Technical enhancement of women.</li>
+              <ul className="list-disc pl-5 space-y-2">
+                <li className="text-foreground">Betterment of society.</li>
+                <li className="text-foreground">Empower women in leadership roles.</li>
+                <li className="text-foreground">Technical enhancement of women.</li>
               </ul>
               <p className="mt-4 text-foreground">
                 Our goal is to facilitate the recruitment and retention of women in technical disciplines globally. We envision a vibrant community of IEEE women and men collectively using their diverse talents to innovate for the benefit of humanity.

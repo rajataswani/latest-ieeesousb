@@ -25,11 +25,11 @@ export default function IEEESOUSSIGHTSBG() {
             <section className="mb-12 glass p-8 rounded-lg animate-on-load animation-delay-700">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Mission</h2>
               <ul className="list-disc pl-5 space-y-2 text-foreground">
-                <li>To utilize the power of technology and engineering to address real-world challenges faced by communities in need.</li>
-                <li>To raise awareness about social issues and inspire IEEE members to engage in projects that have a positive social impact.</li>
-                <li>To promote the development of sustainable solutions that align with IEEE's commitment to the advancement of technology for humanity.</li>
-                <li>To provide hands-on experience in humanitarian technology projects that promote skills development and encourage social responsibility.</li>
-                <li>To build partnerships with other organizations to amplify the positive impact on society.</li>
+                <li className="text-foreground">To utilize the power of technology and engineering to address real-world challenges faced by communities in need.</li>
+                <li className="text-foreground">To raise awareness about social issues and inspire IEEE members to engage in projects that have a positive social impact.</li>
+                <li className="text-foreground">To promote the development of sustainable solutions that align with IEEE's commitment to the advancement of technology for humanity.</li>
+                <li className="text-foreground">To provide hands-on experience in humanitarian technology projects that promote skills development and encourage social responsibility.</li>
+                <li className="text-foreground">To build partnerships with other organizations to amplify the positive impact on society.</li>
               </ul>
             </section>
             

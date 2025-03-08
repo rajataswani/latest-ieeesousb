@@ -24,12 +24,12 @@ export default function IEEESOUSCSSBC() {
             
             <section className="mb-12 glass p-8 rounded-lg animate-on-load animation-delay-700">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Mission</h2>
-              <ul className="list-disc pl-5 space-y-2 text-foreground">
-                <li>To promote education, research, and practical applications in computer science and technology.</li>
-                <li>To bridge the gap between academia and industry by providing students with hands-on experience and exposure to cutting-edge technologies.</li>
-                <li>To establish strong collaborations with the industry and academic institutions to create a robust knowledge-sharing environment.</li>
-                <li>To equip students with critical skills in computer science, enabling them to become leaders in the tech industry.</li>
-                <li>To foster a community where students, faculty, and professionals come together to explore and innovate in computer science and related fields.</li>
+              <ul className="list-disc pl-5 space-y-2">
+                <li className="text-foreground">To promote education, research, and practical applications in computer science and technology.</li>
+                <li className="text-foreground">To bridge the gap between academia and industry by providing students with hands-on experience and exposure to cutting-edge technologies.</li>
+                <li className="text-foreground">To establish strong collaborations with the industry and academic institutions to create a robust knowledge-sharing environment.</li>
+                <li className="text-foreground">To equip students with critical skills in computer science, enabling them to become leaders in the tech industry.</li>
+                <li className="text-foreground">To foster a community where students, faculty, and professionals come together to explore and innovate in computer science and related fields.</li>
               </ul>
             </section>
             

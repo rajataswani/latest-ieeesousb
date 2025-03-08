@@ -129,14 +129,14 @@ export default function Join() {
                     <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select department" className="text-foreground" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="ce">Computer Engineering</SelectItem>
-                      <SelectItem value="it">Information Technology</SelectItem>
-                      <SelectItem value="ec">Electronics & Communication</SelectItem>
-                      <SelectItem value="ee">Electrical Engineering</SelectItem>
-                      <SelectItem value="me">Mechanical Engineering</SelectItem>
-                      <SelectItem value="civil">Civil Engineering</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                    <SelectContent className="text-foreground bg-background">
+                      <SelectItem value="ce" className="text-foreground">Computer Engineering</SelectItem>
+                      <SelectItem value="it" className="text-foreground">Information Technology</SelectItem>
+                      <SelectItem value="ec" className="text-foreground">Electronics & Communication</SelectItem>
+                      <SelectItem value="ee" className="text-foreground">Electrical Engineering</SelectItem>
+                      <SelectItem value="me" className="text-foreground">Mechanical Engineering</SelectItem>
+                      <SelectItem value="civil" className="text-foreground">Civil Engineering</SelectItem>
+                      <SelectItem value="other" className="text-foreground">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -147,9 +147,9 @@ export default function Join() {
                     <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select semester" className="text-foreground" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="text-foreground bg-background">
                       {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
-                        <SelectItem key={sem} value={sem.toString()}>
+                        <SelectItem key={sem} value={sem.toString()} className="text-foreground">
                           Semester {sem}
                         </SelectItem>
                       ))}
@@ -163,11 +163,11 @@ export default function Join() {
                     <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select year" className="text-foreground" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1">First Year</SelectItem>
-                      <SelectItem value="2">Second Year</SelectItem>
-                      <SelectItem value="3">Third Year</SelectItem>
-                      <SelectItem value="4">Fourth Year</SelectItem>
+                    <SelectContent className="text-foreground bg-background">
+                      <SelectItem value="1" className="text-foreground">First Year</SelectItem>
+                      <SelectItem value="2" className="text-foreground">Second Year</SelectItem>
+                      <SelectItem value="3" className="text-foreground">Third Year</SelectItem>
+                      <SelectItem value="4" className="text-foreground">Fourth Year</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

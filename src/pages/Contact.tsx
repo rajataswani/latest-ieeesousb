@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -144,18 +144,18 @@ export default function Contact() {
               
               <div className="glass rounded-lg p-6">
                 <h3 className="text-lg font-semibold mb-4 text-foreground">Contact Information</h3>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li>
+                <ul className="space-y-3">
+                  <li className="text-muted-foreground">
                     <span className="font-medium text-foreground">Email:</span>{" "}
-                    <a href="mailto:aswanirajat@gmail.com" className="hover:text-primary transition-colors">
+                    <a href="mailto:aswanirajat@gmail.com" className="hover:text-primary transition-colors text-foreground">
                       aswanirajat@gmail.com
                     </a>
                   </li>
-                  <li>
-                    <span className="font-medium text-foreground">Phone:</span> +91 07966046304
+                  <li className="text-muted-foreground">
+                    <span className="font-medium text-foreground">Phone:</span> <span className="text-foreground">+91 07966046304</span>
                   </li>
-                  <li>
-                    <span className="font-medium text-foreground">Location:</span> Apple Lab, B-120, Silver Oak University
+                  <li className="text-muted-foreground">
+                    <span className="font-medium text-foreground">Location:</span> <span className="text-foreground">Apple Lab, B-120, Silver Oak University</span>
                   </li>
                 </ul>
               </div>

@@ -17,23 +17,23 @@ export default function IEEESOUSSB() {
           <div className="prose dark:prose-invert max-w-none">
             <section className="mb-12 glass p-8 rounded-lg animate-on-load animation-delay-500">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Vision</h2>
-              <ul className="list-disc pl-5 space-y-2 text-foreground">
-                <li>To be a leading hub for developing globally competitive professionals.</li>
-                <li>To nurture academic excellence and enhance analytical, experimental, and problem-solving abilities.</li>
-                <li>To strengthen collaborations between academia and industry, driving innovation and career growth.</li>
-                <li>To provide purpose-driven education and promote research that addresses real-world challenges.</li>
-                <li>To contribute to the technological, social, and infrastructural advancement of the region.</li>
+              <ul className="list-disc pl-5 space-y-2">
+                <li className="text-foreground">To be a leading hub for developing globally competitive professionals.</li>
+                <li className="text-foreground">To nurture academic excellence and enhance analytical, experimental, and problem-solving abilities.</li>
+                <li className="text-foreground">To strengthen collaborations between academia and industry, driving innovation and career growth.</li>
+                <li className="text-foreground">To provide purpose-driven education and promote research that addresses real-world challenges.</li>
+                <li className="text-foreground">To contribute to the technological, social, and infrastructural advancement of the region.</li>
               </ul>
             </section>
             
             <section className="mb-12 glass p-8 rounded-lg animate-on-load animation-delay-700">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Mission</h2>
-              <ul className="list-disc pl-5 space-y-2 text-foreground">
-                <li>Equip students with cutting-edge technical skills and a problem-solving mindset.</li>
-                <li>Bridge the gap between academia and industry through real-world projects, workshops, and mentorship programs.</li>
-                <li>Build a strong professional network by collaborating with industries, research organizations, and professional societies.</li>
-                <li>Encourage innovation, leadership, and ethical engineering practices among members.</li>
-                <li>Foster an environment that promotes continuous learning, teamwork, and career development.</li>
+              <ul className="list-disc pl-5 space-y-2">
+                <li className="text-foreground">Equip students with cutting-edge technical skills and a problem-solving mindset.</li>
+                <li className="text-foreground">Bridge the gap between academia and industry through real-world projects, workshops, and mentorship programs.</li>
+                <li className="text-foreground">Build a strong professional network by collaborating with industries, research organizations, and professional societies.</li>
+                <li className="text-foreground">Encourage innovation, leadership, and ethical engineering practices among members.</li>
+                <li className="text-foreground">Foster an environment that promotes continuous learning, teamwork, and career development.</li>
               </ul>
             </section>
             

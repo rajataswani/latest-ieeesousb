@@ -19,12 +19,13 @@ export default function Index() {
       }
     }
 
-    // Intersection Observer for animations
+    // Animation for elements when they enter viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animated");
+            entry.target.classList.add("fade-in");
           }
         });
       },
@@ -34,13 +35,14 @@ export default function Index() {
     const animatedElements = document.querySelectorAll(".animate-on-scroll");
     animatedElements.forEach((el) => observer.observe(el));
 
-    // Animate on-load elements
+    // Animate elements on page load with staggered delay
     const animateOnLoadElements = document.querySelectorAll(".animate-on-load");
-    setTimeout(() => {
-      animateOnLoadElements.forEach((el) => {
+    animateOnLoadElements.forEach((el, index) => {
+      setTimeout(() => {
         el.classList.add("animated");
-      });
-    }, 100);
+        el.classList.add("fade-in");
+      }, 100 + (index * 150)); // Staggered animation with 150ms delay between elements
+    });
 
     return () => {
       animatedElements.forEach((el) => observer.unobserve(el));

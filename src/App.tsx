@@ -13,6 +13,14 @@ import Contact from "./pages/Contact";
 import Join from "./pages/Join";
 import NotFound from "./pages/NotFound";
 
+// About pages
+import IEEE from "./pages/about/IEEE";
+import IEEESOUSSB from "./pages/about/IEEESOUSSB";
+import IEEEOUSSBWIE from "./pages/about/IEEEOUSSBWIE";
+import IEEESOUSPSSBC from "./pages/about/IEEESOUSPSSBC";
+import IEEESOUSCSSBC from "./pages/about/IEEESOUSCSSBC";
+import IEEESOUSSIGHTSBG from "./pages/about/IEEESOUSSIGHTSBG";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -30,16 +38,15 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/join" element={<Join />} />
             
-            {/* Add About page routes */}
-            {/* These will be implemented later */}
-            <Route path="/about/ieee" element={<NotFound />} />
-            <Route path="/about/ieee-sou-sb" element={<NotFound />} />
-            <Route path="/about/ieee-sou-wie-sb-ag" element={<NotFound />} />
-            <Route path="/about/ieee-sou-sps-sbc" element={<NotFound />} />
-            <Route path="/about/ieee-sou-cs-sbc" element={<NotFound />} />
-            <Route path="/about/ieee-sou-sight-sbg" element={<NotFound />} />
+            {/* About page routes */}
+            <Route path="/about/ieee" element={<IEEE />} />
+            <Route path="/about/ieee-sou-sb" element={<IEEESOUSSB />} />
+            <Route path="/about/ieee-sou-wie-sb-ag" element={<IEEEOUSSBWIE />} />
+            <Route path="/about/ieee-sou-sps-sbc" element={<IEEESOUSPSSBC />} />
+            <Route path="/about/ieee-sou-cs-sbc" element={<IEEESOUSCSSBC />} />
+            <Route path="/about/ieee-sou-sight-sbg" element={<IEEESOUSSIGHTSBG />} />
             
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

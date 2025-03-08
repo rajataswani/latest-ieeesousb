@@ -19,12 +19,15 @@ export default function Contact() {
         {
           duration: 5000,
           style: {
-            fontSize: "1rem",
-            padding: "1rem",
+            fontSize: "1.1rem",
+            padding: "1.25rem",
             backgroundColor: "var(--primary)",
             color: "white",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
           },
-          onDismiss: () => setShowNotification(false)
+          position: "top-center",
+          onDismiss: () => setShowNotification(false),
+          className: "hover:scale-105 transition-transform"
         }
       );
     }
@@ -41,11 +44,14 @@ export default function Contact() {
     e.preventDefault();
     toast.info("Contact us form is inactive, kindly reach us at Apple Lab, B-120 for any queries", {
       style: {
-        fontSize: "1rem",
-        padding: "1rem",
+        fontSize: "1.1rem",
+        padding: "1.25rem",
         backgroundColor: "var(--primary)",
         color: "white",
-      }
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+      },
+      position: "top-center",
+      className: "hover:scale-105 transition-transform"
     });
   };
 
@@ -56,14 +62,14 @@ export default function Contact() {
       <main className="flex-grow pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-load">Contact Us</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-on-load animation-delay-300">
               Have a question or want to know more about our IEEE SOU SB? Reach out to us and we'll get back to you as soon as possible.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="glass rounded-lg p-8 flex flex-col justify-center">
+            <div className="glass rounded-lg p-8 flex flex-col justify-center animate-on-load animation-delay-500">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
@@ -89,7 +95,7 @@ export default function Contact() {
               </form>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-6 animate-on-load animation-delay-700">
               <div className="glass rounded-lg p-6">
                 <h3 className="text-lg font-semibold mb-4">Visit Us</h3>
                 <p className="text-muted-foreground">

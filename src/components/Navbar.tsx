@@ -104,7 +104,8 @@ export default function Navbar() {
               <img
                 src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/ieee_sou_sb_logo-removebg-preview.png"
                 alt="IEEE SOU SB Logo"
-                className="h-12 w-auto md:h-12 object-contain"
+                className="h-12 w-auto md:h-12 object-contain max-h-12 sm:max-h-none"
+                style={{ maxWidth: '180px' }}
               />
             </Link>
           </div>
@@ -166,26 +167,8 @@ export default function Navbar() {
             </div>
           </nav>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="text-primary border-primary hover:bg-primary/10 mr-2"
-              asChild
-            >
-              <Link to="/join">Join</Link>
-            </Button>
-            
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme} 
-              className="mr-2"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
-            
+          {/* Mobile menu button only */}
+          <div className="flex md:hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -214,7 +197,7 @@ export default function Navbar() {
                         key={child.title}
                         to={child.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="block px-3 py-2 rounded-md text-xs font-medium hover:bg-secondary transition-colors"
+                        className="block px-3 py-2 rounded-md text-xs font-medium hover:bg-secondary transition-colors text-center"
                       >
                         {child.title}
                       </Link>
@@ -232,6 +215,35 @@ export default function Navbar() {
               )}
             </React.Fragment>
           ))}
+          
+          {/* Mobile theme toggle & join button */}
+          <div className="flex flex-col space-y-2 pt-2 border-t border-gray-200 dark:border-gray-800 mt-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="text-primary border-primary hover:bg-primary/10 w-full"
+              asChild
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Link to="/join">Join IEEE</Link>
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => {
+                toggleTheme();
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full justify-center"
+            >
+              {theme === "dark" ? (
+                <span className="flex items-center"><Sun className="h-4 w-4 mr-2" /> Light Mode</span>
+              ) : (
+                <span className="flex items-center"><Moon className="h-4 w-4 mr-2" /> Dark Mode</span>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </header>

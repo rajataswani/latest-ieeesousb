@@ -5,27 +5,9 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-
-const DEPARTMENTS = [
-  "Computer Engineering",
-  "Information Technology",
-  "Electronics & Communication",
-  "Electrical Engineering",
-  "Mechanical Engineering",
-  "Civil Engineering",
-  "Chemical Engineering",
-  "Other"
-];
-
-const SEMESTERS = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
 export default function Join() {
   const [showNotification, setShowNotification] = useState(true);
@@ -34,19 +16,19 @@ export default function Join() {
     // Show notification when component mounts
     if (showNotification) {
       toast.info(
-        "Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for IEEE membership", 
+        "Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries", 
         {
           duration: 5000,
           style: {
-            fontSize: "1rem",
-            padding: "1rem",
+            fontSize: "1.1rem",
+            padding: "1.25rem",
             backgroundColor: "var(--primary)",
             color: "white",
-            transform: "scale(1)",
-            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
           },
-          className: "hover:scale-105 transition-transform duration-200",
-          onDismiss: () => setShowNotification(false)
+          position: "top-center",
+          onDismiss: () => setShowNotification(false),
+          className: "hover:scale-105 transition-transform"
         }
       );
     }
@@ -61,44 +43,38 @@ export default function Join() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form is inactive, just show the toast again
-    toast.info("Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for IEEE membership", {
+    toast.info("Join IEEE form is inactive, kindly reach us at Apple Lab, B-120 for any queries", {
       style: {
-        fontSize: "1rem",
-        padding: "1rem",
+        fontSize: "1.1rem",
+        padding: "1.25rem",
         backgroundColor: "var(--primary)",
         color: "white",
-        transform: "scale(1)",
-        boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
       },
-      className: "hover:scale-105 transition-transform duration-200"
+      position: "top-center",
+      className: "hover:scale-105 transition-transform"
     });
   };
-
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <main className="flex-grow pt-24 pb-16 animate-fade-in">
+      <main className="flex-grow pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Join IEEE SOU SB</h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-on-load">Join IEEE SOU SB</h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-on-load animation-delay-300">
               Get access to cutting-edge information, networking opportunities, career enhancement, and other exclusive member benefits.
             </p>
           </div>
           
-          <div className="glass rounded-lg p-8">
+          <div className="glass rounded-lg p-8 animate-on-load animation-delay-500">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input id="firstName" placeholder="Your first name" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
-                  <Input id="lastName" placeholder="Your last name" />
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input id="name" placeholder="Your full name" />
                 </div>
                 
                 <div className="space-y-2">
@@ -112,13 +88,13 @@ export default function Join() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="college">College</Label>
-                  <Input id="college" placeholder="SOCET or ASOIT" />
+                  <Label htmlFor="enrollment">Enrollment Number</Label>
+                  <Input id="enrollment" placeholder="Your enrollment number" />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="enrollmentNo">Enrollment Number</Label>
-                  <Input id="enrollmentNo" placeholder="Your college enrollment number" />
+                  <Label htmlFor="college">College</Label>
+                  <Input id="college" placeholder="SOCET or ASOIT" />
                 </div>
                 
                 <div className="space-y-2">
@@ -128,9 +104,13 @@ export default function Join() {
                       <SelectValue placeholder="Select department" />
                     </SelectTrigger>
                     <SelectContent>
-                      {DEPARTMENTS.map(dept => (
-                        <SelectItem key={dept} value={dept}>{dept}</SelectItem>
-                      ))}
+                      <SelectItem value="ce">Computer Engineering</SelectItem>
+                      <SelectItem value="it">Information Technology</SelectItem>
+                      <SelectItem value="ec">Electronics & Communication</SelectItem>
+                      <SelectItem value="ee">Electrical Engineering</SelectItem>
+                      <SelectItem value="me">Mechanical Engineering</SelectItem>
+                      <SelectItem value="civil">Civil Engineering</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -142,64 +122,42 @@ export default function Join() {
                       <SelectValue placeholder="Select semester" />
                     </SelectTrigger>
                     <SelectContent>
-                      {SEMESTERS.map(sem => (
-                        <SelectItem key={sem} value={sem}>{sem}</SelectItem>
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                        <SelectItem key={sem} value={sem.toString()}>
+                          Semester {sem}
+                        </SelectItem>
                       ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="year">Academic Year</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select year" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1">First Year</SelectItem>
+                      <SelectItem value="2">Second Year</SelectItem>
+                      <SelectItem value="3">Third Year</SelectItem>
+                      <SelectItem value="4">Fourth Year</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="interests">Technical Interests</Label>
-                <Input id="interests" placeholder="e.g., Artificial Intelligence, IoT, Web Development" />
+                <Label htmlFor="reason">Why do you want to join IEEE?</Label>
+                <Textarea 
+                  id="reason" 
+                  placeholder="Tell us why you're interested in joining IEEE SOU SB"
+                  rows={4}
+                />
               </div>
               
-              <div className="pt-4">
-                <Button type="submit" className="w-full">Submit Application</Button>
-              </div>
+              <Button type="submit" className="w-full">Submit Application</Button>
             </form>
-          </div>
-          
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold mb-4">Membership Benefits</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="glass rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-2">Technical Development</h3>
-                <ul className="space-y-2 list-disc pl-5 text-muted-foreground">
-                  <li>Access to cutting-edge technical publications and research</li>
-                  <li>Workshops and hands-on sessions on emerging technologies</li>
-                  <li>Mentorship from industry professionals and academic experts</li>
-                </ul>
-              </div>
-              
-              <div className="glass rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-2">Networking Opportunities</h3>
-                <ul className="space-y-2 list-disc pl-5 text-muted-foreground">
-                  <li>Connect with like-minded students from various institutions</li>
-                  <li>Meet and learn from industry leaders and professionals</li>
-                  <li>Build relationships that can last throughout your career</li>
-                </ul>
-              </div>
-              
-              <div className="glass rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-2">Career Enhancement</h3>
-                <ul className="space-y-2 list-disc pl-5 text-muted-foreground">
-                  <li>Leadership and soft skills development through various roles</li>
-                  <li>Resume building through participation in IEEE activities</li>
-                  <li>Internship and job opportunities through IEEE network</li>
-                </ul>
-              </div>
-              
-              <div className="glass rounded-lg p-6">
-                <h3 className="text-lg font-semibold mb-2">Personal Growth</h3>
-                <ul className="space-y-2 list-disc pl-5 text-muted-foreground">
-                  <li>Develop confidence through presentations and public speaking</li>
-                  <li>Enhance organizational skills by participating in event planning</li>
-                  <li>Cultivate a global mindset through IEEE's international network</li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </main>

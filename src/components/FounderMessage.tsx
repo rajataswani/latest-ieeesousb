@@ -49,11 +49,11 @@ export default function FounderMessage() {
             "shadow-md hover:shadow-lg transition-all duration-300"
           )}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="flex justify-center md:justify-end">
+              <div className="flex justify-center md:justify-start md:pl-4">
                 <img 
                   src="http://ieee.socet.edu.in/wp-content/uploads/2025/03/satviksir.jpg"
                   alt="Dr. Satvik Khara"
-                  className="rounded-lg shadow-md max-w-[240px] h-auto"
+                  className="rounded-lg shadow-md max-w-[200px] h-auto"
                 />
               </div>
               
